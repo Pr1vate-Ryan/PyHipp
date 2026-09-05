@@ -2,13 +2,13 @@
 
 # Submit this script with: sbatch <this-filename>
 
-#SBATCH --time=24:00:00   # walltime
+#SBATCH --time=1:00:00   # walltime
 #SBATCH --ntasks=1   # number of processor cores (i.e. tasks)
 #SBATCH --nodes=1   # number of nodes
-#SBATCH --cpus-per-task=1	# number of processors per task
-#SBATCH -J "rplspl"   # job name
+#SBATCH -J "pipe"   # job name
 
 ## /SBATCH -p general # partition (queue)
+#SBATCH -J "rplspl"   # job name
 #SBATCH -o rplspl-slurm.%N.%j.out # STDOUT
 #SBATCH -e rplspl-slurm.%N.%j.err # STDERR
 
@@ -27,5 +27,5 @@ DPT.objects.processDirs(level='channel', cmd='import PyHipp as pyh; from PyHipp 
 print(time.localtime()); \
 print(time.time()-t0);"
 
-aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:012345678901:awsnotify --message "RPLSplitJobDone"
+aws sns publish --topic-arn arn:aws:sns:ap-southeast-1:057704056662:awsnotify --message "RPLSplitJobDone"
 
